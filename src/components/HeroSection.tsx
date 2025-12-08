@@ -1,8 +1,16 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Mail } from "lucide-react";
+import { ArrowDown, Download, Mail, Github, Linkedin, Instagram, Youtube, Twitter } from "lucide-react";
 import { Button } from "./ui/button";
 import Scene3D from "./Scene3D";
 import ParticleBackground from "./ParticleBackground";
+
+const socialLinks = [
+  { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/in/ravisp", color: "hover:text-[#0A66C2]" },
+  { name: "GitHub", icon: Github, url: "https://github.com/ravisp", color: "hover:text-foreground" },
+  { name: "Instagram", icon: Instagram, url: "https://instagram.com", color: "hover:text-[#E4405F]" },
+  { name: "YouTube", icon: Youtube, url: "https://youtube.com", color: "hover:text-[#FF0000]" },
+  { name: "Twitter", icon: Twitter, url: "https://twitter.com", color: "hover:text-[#1DA1F2]" },
+];
 
 const HeroSection = () => {
   const containerVariants = {
@@ -49,79 +57,130 @@ const HeroSection = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 container mx-auto px-4 text-center"
+        className="relative z-10 container mx-auto px-4"
       >
-        <motion.div variants={itemVariants} className="mb-6">
-          <span className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-heading tracking-widest uppercase backdrop-blur-sm">
-            Creative Developer
-          </span>
-        </motion.div>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-center lg:text-left">
+            <motion.div variants={itemVariants} className="mb-6">
+              <span className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-heading tracking-widest uppercase backdrop-blur-sm">
+                Software Developer
+              </span>
+            </motion.div>
 
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6"
-        >
-          <span className="block text-foreground">Hello, I'm</span>
-          <span className="block gradient-text neon-text mt-2">
-            John Doe
-          </span>
-        </motion.h1>
-
-        <motion.p
-          variants={itemVariants}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-body"
-        >
-          A passionate full-stack developer crafting immersive digital experiences
-          with cutting-edge technologies and creative design.
-        </motion.p>
-
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <Button variant="hero" size="xl" asChild>
-            <a href="#projects">
-              View Projects
-              <ArrowDown className="ml-2 animate-bounce" />
-            </a>
-          </Button>
-          <Button variant="hero-outline" size="xl" asChild>
-            <a href="#contact">
-              <Mail className="mr-2" />
-              Contact Me
-            </a>
-          </Button>
-          <Button variant="neon" size="lg" asChild>
-            <a href="/resume.pdf" download>
-              <Download className="mr-2" />
-              Resume
-            </a>
-          </Button>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-12 flex justify-center gap-6"
-        >
-          {[
-            { name: "GitHub", url: "https://github.com" },
-            { name: "LinkedIn", url: "https://linkedin.com" },
-            { name: "Twitter", url: "https://twitter.com" },
-          ].map((social) => (
-            <motion.a
-              key={social.name}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors text-sm font-heading tracking-wider uppercase"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6"
             >
-              {social.name}
-            </motion.a>
-          ))}
-        </motion.div>
+              <span className="block text-foreground">Hi, I'm</span>
+              <span className="block gradient-text neon-text mt-2">
+                Ravi SP
+              </span>
+            </motion.h1>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-muted-foreground max-w-xl mb-4 font-body"
+            >
+              Final-Year Computer Science & Design Student
+            </motion.p>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-base text-muted-foreground/80 max-w-xl mb-8 font-body"
+            >
+              Software Developer | System Design | React — Building efficient, creative software solutions.
+            </motion.p>
+
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
+            >
+              <Button variant="hero" size="xl" asChild>
+                <a href="#projects">
+                  View Projects
+                  <ArrowDown className="ml-2 animate-bounce" />
+                </a>
+              </Button>
+              <Button variant="hero-outline" size="xl" asChild>
+                <a href="#contact">
+                  <Mail className="mr-2" />
+                  Get In Touch
+                </a>
+              </Button>
+              <Button variant="neon" size="lg" asChild>
+                <a href="/assets/Ravi_SP_Resume.pdf" download>
+                  <Download className="mr-2" />
+                  Resume
+                </a>
+              </Button>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-10 flex justify-center lg:justify-start gap-4"
+            >
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2.5 rounded-full bg-muted/30 text-muted-foreground ${social.color} transition-all hover:shadow-lg hover:shadow-primary/20 backdrop-blur-sm border border-border/30`}
+                  whileHover={{ scale: 1.2, y: -3 }}
+                  whileTap={{ scale: 0.9 }}
+                  title={social.name}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right - Profile Image */}
+          <motion.div
+            variants={itemVariants}
+            className="hidden lg:flex justify-center items-center"
+          >
+            <motion.div
+              className="relative"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              {/* Glow effect behind image */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary via-accent to-secondary rounded-full blur-3xl opacity-30 scale-110" />
+              
+              {/* Profile image placeholder */}
+              <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl shadow-primary/20">
+                <div className="w-full h-full bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 flex items-center justify-center">
+                  <span className="text-8xl font-display font-bold gradient-text">R</span>
+                </div>
+                {/* Replace the div above with this when you have an actual image:
+                <img 
+                  src="/assets/ravi-profile.jpg" 
+                  alt="Ravi SP" 
+                  className="w-full h-full object-cover"
+                /> 
+                */}
+              </div>
+
+              {/* Decorative rings */}
+              <motion.div
+                className="absolute inset-0 border-2 border-primary/20 rounded-full"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                style={{ scale: 1.2 }}
+              />
+              <motion.div
+                className="absolute inset-0 border border-secondary/20 rounded-full"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                style={{ scale: 1.35 }}
+              />
+            </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Scroll indicator */}
