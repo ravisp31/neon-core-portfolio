@@ -1,0 +1,150 @@
+import { motion } from "framer-motion";
+import { ArrowDown, Download, Mail } from "lucide-react";
+import { Button } from "./ui/button";
+import Scene3D from "./Scene3D";
+import ParticleBackground from "./ParticleBackground";
+
+const HeroSection = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  return (
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 animated-gradient-bg opacity-50" />
+      
+      {/* Gradient orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-float" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-[100px] animate-float-slow" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px]" />
+
+      {/* 3D Scene */}
+      <Scene3D />
+
+      {/* Particles */}
+      <ParticleBackground variant="hero" />
+
+      {/* Content */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 container mx-auto px-4 text-center"
+      >
+        <motion.div variants={itemVariants} className="mb-6">
+          <span className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-heading tracking-widest uppercase backdrop-blur-sm">
+            Creative Developer
+          </span>
+        </motion.div>
+
+        <motion.h1
+          variants={itemVariants}
+          className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6"
+        >
+          <span className="block text-foreground">Hello, I'm</span>
+          <span className="block gradient-text neon-text mt-2">
+            John Doe
+          </span>
+        </motion.h1>
+
+        <motion.p
+          variants={itemVariants}
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-body"
+        >
+          A passionate full-stack developer crafting immersive digital experiences
+          with cutting-edge technologies and creative design.
+        </motion.p>
+
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <Button variant="hero" size="xl" asChild>
+            <a href="#projects">
+              View Projects
+              <ArrowDown className="ml-2 animate-bounce" />
+            </a>
+          </Button>
+          <Button variant="hero-outline" size="xl" asChild>
+            <a href="#contact">
+              <Mail className="mr-2" />
+              Contact Me
+            </a>
+          </Button>
+          <Button variant="neon" size="lg" asChild>
+            <a href="/resume.pdf" download>
+              <Download className="mr-2" />
+              Resume
+            </a>
+          </Button>
+        </motion.div>
+
+        {/* Social Links */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-12 flex justify-center gap-6"
+        >
+          {[
+            { name: "GitHub", url: "https://github.com" },
+            { name: "LinkedIn", url: "https://linkedin.com" },
+            { name: "Twitter", url: "https://twitter.com" },
+          ].map((social) => (
+            <motion.a
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors text-sm font-heading tracking-wider uppercase"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {social.name}
+            </motion.a>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-6 h-10 rounded-full border-2 border-primary/50 flex justify-center pt-2"
+        >
+          <motion.div
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-1.5 h-1.5 bg-primary rounded-full"
+          />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default HeroSection;
