@@ -72,12 +72,7 @@ const HeroSection = () => {
           </span>
         </motion.h1>
 
-        <motion.p
-          variants={itemVariants}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-body"
-        >
-          Final-Year Computer Science & Design Student
-        </motion.p>
+        <motion.div variants={itemVariants} className="mb-10" />
 
         <motion.div
           variants={itemVariants}

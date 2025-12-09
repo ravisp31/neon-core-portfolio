@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Award, ExternalLink, Calendar } from "lucide-react";
-import { Button } from "./ui/button";
+import { useRef, useState } from "react";
+import { Award, Calendar, X } from "lucide-react";
 
 const certifications = [
   {
@@ -10,27 +9,28 @@ const certifications = [
     issuer: "Infosys Springboard",
     date: "September 2024",
     color: "primary",
-    pdfUrl: "/certificates/java_foundation_certificate.pdf",
+    imageUrl: "/certificates/java_foundation_certificate.png",
   },
   {
     title: "Unity Certified Associate: Game Developer",
     issuer: "Unity Technologies",
     date: "June 2025",
     color: "secondary",
-    pdfUrl: "/certificates/unity_game_developer_certificate.pdf",
+    imageUrl: "/certificates/unity_game_developer_certificate.png",
   },
   {
     title: "Design & Implementation of Human-Computer Interfaces",
     issuer: "NPTEL (IIT Guwahati)",
     date: "Jul-Oct 2024",
     color: "accent",
-    pdfUrl: "/certificates/nptel_hci_certificate.pdf",
+    imageUrl: "/certificates/nptel_hci_certificate.png",
   },
 ];
 
 const CertificationsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <section id="certifications" className="py-32 relative overflow-hidden" ref={ref}>
@@ -50,16 +50,25 @@ const CertificationsSection = () => {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.15 }}
                 whileHover={{ y: -5 }}
-                className="glass-card p-6 rounded-2xl group hover:border-primary/30 transition-all"
+                className="glass-card p-6 rounded-2xl group hover:border-primary/30 transition-all cursor-pointer"
+                onClick={() => setSelectedImage(cert.imageUrl)}
               >
-                <div className={`w-12 h-12 mb-4 rounded-xl flex items-center justify-center ${
+                <div className="relative w-full h-40 mb-4 rounded-xl overflow-hidden bg-muted/30">
+                  <img 
+                    src={cert.imageUrl} 
+                    alt={cert.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                
+                <div className={`w-10 h-10 mb-3 rounded-lg flex items-center justify-center ${
                   cert.color === "primary" 
                     ? "bg-primary/10" 
                     : cert.color === "secondary" 
                     ? "bg-secondary/10" 
                     : "bg-accent/10"
                 }`}>
-                  <Award className={`w-6 h-6 ${
+                  <Award className={`w-5 h-5 ${
                     cert.color === "primary" 
                       ? "text-primary" 
                       : cert.color === "secondary" 
@@ -69,24 +78,47 @@ const CertificationsSection = () => {
                 </div>
                 
                 <h3 className="text-lg font-display font-bold text-foreground mb-2 leading-tight">{cert.title}</h3>
-                <p className="text-muted-foreground text-sm mb-3">{cert.issuer}</p>
+                <p className="text-muted-foreground text-sm mb-2">{cert.issuer}</p>
                 
-                <div className="flex items-center gap-2 text-muted-foreground/70 text-xs mb-4">
+                <div className="flex items-center gap-2 text-muted-foreground/70 text-xs">
                   <Calendar className="w-3 h-3" />
                   <span>{cert.date}</span>
                 </div>
-
-                <Button variant="outline" size="sm" className="w-full" asChild>
-                  <a href={cert.pdfUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View Certificate
-                  </a>
-                </Button>
               </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-sm p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="relative max-w-4xl w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute -top-12 right-0 p-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <img 
+              src={selectedImage} 
+              alt="Certificate" 
+              className="w-full rounded-xl shadow-2xl"
+            />
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 };
