@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Instagram, Youtube, Code, ExternalLink, Mail, Phone, MapPin } from "lucide-react";
+import { Github, Linkedin, Code, ExternalLink, Mail, Phone, MapPin } from "lucide-react";
 
 const socialLinks = [
   { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/in/ravisp", color: "hover:text-[#0A66C2]" },
   { name: "GitHub", icon: Github, url: "https://github.com/ravisp", color: "hover:text-foreground" },
-  { name: "Instagram", icon: Instagram, url: "https://instagram.com", color: "hover:text-[#E4405F]" },
-  { name: "YouTube", icon: Youtube, url: "https://youtube.com", color: "hover:text-[#FF0000]" },
-  { name: "Twitter", icon: Twitter, url: "https://twitter.com", color: "hover:text-[#1DA1F2]" },
 ];
 
 const codingProfiles = [

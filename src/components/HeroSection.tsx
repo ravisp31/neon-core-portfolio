@@ -74,16 +74,9 @@ const HeroSection = () => {
 
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 font-body"
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-body"
         >
           Final-Year Computer Science & Design Student
-        </motion.p>
-
-        <motion.p
-          variants={itemVariants}
-          className="text-base text-muted-foreground/80 max-w-2xl mx-auto mb-10 font-body"
-        >
-          Software Developer | System Design | React — Building efficient, creative software solutions.
         </motion.p>
 
         <motion.div

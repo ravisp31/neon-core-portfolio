@@ -5,9 +5,9 @@ import { Briefcase } from "lucide-react";
 import { Button } from "./ui/button";
 
 const skillCategories = [
-  { title: "Languages", color: "primary", skills: [{ name: "Java", level: 85 }, { name: "HTML", level: 90 }, { name: "CSS", level: 85 }, { name: "JavaScript", level: 80 }] },
-  { title: "Frameworks", color: "secondary", skills: [{ name: "ReactJS", level: 80 }, { name: "Node.js", level: 70 }, { name: "Express", level: 70 }, { name: "Tailwind", level: 75 }] },
-  { title: "Tools & DB", color: "accent", skills: [{ name: "MySQL", level: 75 }, { name: "MongoDB", level: 70 }, { name: "Git", level: 80 }, { name: "VS Code", level: 90 }] },
+  { title: "Languages", color: "primary", skills: ["Java", "HTML", "CSS", "JavaScript"] },
+  { title: "Frameworks", color: "secondary", skills: ["ReactJS", "Node.js", "Express"] },
+  { title: "Tools & DB", color: "accent", skills: ["MySQL", "MongoDB", "Git", "VS Code", "Unity"] },
 ];
 
 const SkillsSection = () => {
@@ -27,14 +27,23 @@ const SkillsSection = () => {
             {skillCategories.map((cat, ci) => (
               <motion.div key={cat.title} initial={{ opacity: 0, y: 50 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: ci * 0.2 }} className="glass-card p-8 rounded-2xl">
                 <h3 className={`text-xl font-display font-bold mb-6 text-${cat.color}`}>{cat.title}</h3>
-                <div className="space-y-5">
+                <div className="flex flex-wrap gap-3">
                   {cat.skills.map((skill, si) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between mb-1"><span className="font-heading text-foreground text-sm">{skill.name}</span><span className="text-muted-foreground text-xs">{skill.level}%</span></div>
-                      <div className="h-2 bg-muted rounded-full overflow-hidden">
-                        <motion.div initial={{ width: 0 }} animate={isInView ? { width: `${skill.level}%` } : {}} transition={{ delay: ci * 0.2 + si * 0.1 + 0.3, duration: 0.8 }} className={`h-full rounded-full bg-gradient-to-r ${cat.color === "primary" ? "from-primary to-primary/50" : cat.color === "secondary" ? "from-secondary to-secondary/50" : "from-accent to-accent/50"}`} />
-                      </div>
-                    </div>
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ delay: ci * 0.2 + si * 0.1 + 0.3 }}
+                      className={`px-4 py-2 rounded-full border text-sm font-heading ${
+                        cat.color === "primary" 
+                          ? "border-primary/30 bg-primary/10 text-primary" 
+                          : cat.color === "secondary" 
+                          ? "border-secondary/30 bg-secondary/10 text-secondary" 
+                          : "border-accent/30 bg-accent/10 text-accent"
+                      }`}
+                    >
+                      {skill}
+                    </motion.span>
                   ))}
                 </div>
               </motion.div>
