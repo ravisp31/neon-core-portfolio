@@ -1,15 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code, Palette, Rocket, Users, GraduationCap, Calendar, MapPin, Download } from "lucide-react";
+import { GraduationCap, Calendar, Download } from "lucide-react";
 import { Button } from "./ui/button";
 
-const highlights = [
-  { icon: Code, title: "Software Development", description: "Building efficient, scalable applications" },
-  { icon: Palette, title: "Design Thinking", description: "Creating user-centered solutions" },
-  { icon: Rocket, title: "System Design", description: "Architecting robust systems" },
-  { icon: Users, title: "Team Collaboration", description: "Effective communication & teamwork" },
-];
 
 const education = [
   { degree: "B.Tech Computer Science and Design", institution: "Sona College of Technology, Salem", period: "2022 – 2026", grade: "CGPA 7.36", current: true },
@@ -44,9 +38,9 @@ const AboutSection = () => {
             </div>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="max-w-2xl mx-auto">
+            <h3 className="text-lg font-display font-bold text-foreground mb-4 flex items-center gap-2"><GraduationCap className="w-5 h-5 text-primary" />Education</h3>
             <div className="space-y-4">
-              <h3 className="text-lg font-display font-bold text-foreground mb-4 flex items-center gap-2"><GraduationCap className="w-5 h-5 text-primary" />Education</h3>
               {education.map((edu, i) => (
                 <motion.div key={edu.degree} initial={{ opacity: 0, x: -30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: i * 0.1 }} className={`glass-card p-5 rounded-xl ${edu.current ? 'border border-primary/30' : ''}`}>
                   {edu.current && <span className="text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded font-heading uppercase">Current</span>}
@@ -56,15 +50,6 @@ const AboutSection = () => {
                     <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{edu.period}</span>
                     <span className="px-2 py-0.5 bg-accent/20 text-accent rounded">{edu.grade}</span>
                   </div>
-                </motion.div>
-              ))}
-            </div>
-            <div className="space-y-4">
-              <h3 className="text-lg font-display font-bold text-foreground mb-4">What I Bring</h3>
-              {highlights.map((item, i) => (
-                <motion.div key={item.title} initial={{ opacity: 0, x: 30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: i * 0.1 }} whileHover={{ x: 5 }} className="glass-card p-4 rounded-xl flex items-center gap-4 group">
-                  <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors"><item.icon className="w-5 h-5" /></div>
-                  <div><h4 className="font-display font-bold text-foreground">{item.title}</h4><p className="text-muted-foreground text-sm">{item.description}</p></div>
                 </motion.div>
               ))}
             </div>
