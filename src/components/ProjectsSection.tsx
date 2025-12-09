@@ -1,12 +1,28 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "./ui/button";
 
 const projects = [
-  { title: "Task Manager App", description: "A full-stack task manager where users can sign up, log in, and manage daily tasks. Supports CRUD operations and marking tasks as complete.", image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop", tags: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MongoDB"], liveUrl: "#", githubUrl: "#", color: "primary" },
-  { title: "Portfolio Website", description: "Modern animated personal portfolio with 3D elements, particle effects, and smooth page transitions.", image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop", tags: ["React", "Framer Motion", "Three.js", "Tailwind"], liveUrl: "#", githubUrl: "#", color: "secondary" },
+  { 
+    title: "Task Manager App", 
+    description: "A full-stack task manager where users can sign up, log in, and manage daily tasks. Supports CRUD operations and marking tasks as complete.", 
+    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop", 
+    tags: ["HTML", "CSS", "JavaScript", "Node.js", "Express", "MongoDB"], 
+    liveUrl: "#", 
+    githubUrl: "#", 
+    color: "primary" 
+  },
+  { 
+    title: "Immersive Zoo and Flower Walk", 
+    description: "A Virtual Reality (VR) experience where users can explore virtual animals and flowers using an Oculus headset. The system shows information overlays (pop-up details that appear on top of the scene) to make the experience more interactive and engaging.", 
+    image: "https://images.unsplash.com/photo-1617802690992-15d93263d3a9?w=800&h=600&fit=crop", 
+    tags: ["Unity", "Oculus VR", "C#", "3D Modeling"], 
+    liveUrl: "#", 
+    githubUrl: "#", 
+    color: "secondary" 
+  },
 ];
 
 const ProjectsSection = () => {
