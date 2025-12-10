@@ -56,12 +56,6 @@ const HeroSection = () => {
         animate="visible"
         className="relative z-10 container mx-auto px-4 text-center"
       >
-        <motion.div variants={itemVariants} className="mb-6">
-          <span className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-heading tracking-widest uppercase backdrop-blur-sm">
-            Software Developer
-          </span>
-        </motion.div>
-
         <motion.h1
           variants={itemVariants}
           className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-4"
@@ -74,7 +68,7 @@ const HeroSection = () => {
 
         <motion.p
           variants={itemVariants}
-          className="text-xl md:text-2xl lg:text-3xl text-foreground/70 font-heading mb-10"
+          className="text-2xl md:text-3xl lg:text-4xl text-foreground/70 font-heading mb-10"
         >
           B.E Computer Science and Design Student
         </motion.p>
