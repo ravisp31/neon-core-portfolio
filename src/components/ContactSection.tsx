@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
+import ParticleBackground from "./ParticleBackground";
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "ravisp312005@gmail.com", href: "mailto:ravisp312005@gmail.com" },
@@ -28,8 +29,11 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-32 relative overflow-hidden" ref={ref}>
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px]" />
-      <div className="container mx-auto px-4">
+      <div className="absolute inset-0 animated-gradient-bg opacity-30" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[100px]" />
+      <ParticleBackground variant="default" />
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div initial={{ opacity: 0 }} animate={isInView ? { opacity: 1 } : {}} className="max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} className="text-center mb-16">
             <span className="text-primary font-heading tracking-widest uppercase text-sm">Get In Touch</span>

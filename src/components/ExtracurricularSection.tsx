@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Award, Users, Target, Shield } from "lucide-react";
+import ParticleBackground from "./ParticleBackground";
 
 const activities = [
   {
@@ -27,8 +28,11 @@ const ExtracurricularSection = () => {
 
   return (
     <section id="extracurricular" className="py-32 relative overflow-hidden" ref={ref}>
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[150px] -translate-y-1/2" />
-      <div className="container mx-auto px-4">
+      <div className="absolute inset-0 animated-gradient-bg opacity-30" />
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[120px] -translate-y-1/2" />
+      <div className="absolute top-1/4 left-0 w-[300px] h-[300px] bg-accent/8 rounded-full blur-[80px]" />
+      <ParticleBackground variant="default" />
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div initial={{ opacity: 0 }} animate={isInView ? { opacity: 1 } : { opacity: 0 }} className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} className="text-center mb-16">
             <span className="text-primary font-heading tracking-widest uppercase text-sm">Beyond Academics</span>
