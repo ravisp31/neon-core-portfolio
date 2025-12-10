@@ -64,7 +64,7 @@ const HeroSection = () => {
 
         <motion.h1
           variants={itemVariants}
-          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6"
+          className="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-4"
         >
           <span className="block text-foreground">Hi, I'm</span>
           <span className="block gradient-text neon-text mt-2">
@@ -72,7 +72,12 @@ const HeroSection = () => {
           </span>
         </motion.h1>
 
-        <motion.div variants={itemVariants} className="mb-10" />
+        <motion.p
+          variants={itemVariants}
+          className="text-lg md:text-xl text-muted-foreground font-heading mb-10"
+        >
+          B.E Computer Science and Design
+        </motion.p>
 
         <motion.div
           variants={itemVariants}
