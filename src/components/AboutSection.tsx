@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { GraduationCap, Calendar, Download } from "lucide-react";
 import { Button } from "./ui/button";
-
+import ParticleBackground from "./ParticleBackground";
 
 const education = [
   { degree: "B.Tech Computer Science and Design", institution: "Sona College of Technology, Salem", period: "2022 – 2026", grade: "CGPA 7.36", current: true },
@@ -17,8 +17,11 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="py-32 relative overflow-hidden" ref={ref}>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px]" />
-      <div className="container mx-auto px-4">
+      <div className="absolute inset-0 animated-gradient-bg opacity-30" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-secondary/8 rounded-full blur-[100px]" />
+      <div className="absolute bottom-1/4 left-0 w-[300px] h-[300px] bg-primary/8 rounded-full blur-[80px]" />
+      <ParticleBackground variant="default" />
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div initial={{ opacity: 0 }} animate={isInView ? { opacity: 1 } : { opacity: 0 }} className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} className="text-center mb-16">
             <span className="text-primary font-heading tracking-widest uppercase text-sm">Get to know me</span>

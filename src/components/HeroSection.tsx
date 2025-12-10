@@ -36,11 +36,11 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Animated gradient background */}
-      <div className="absolute inset-0 animated-gradient-bg opacity-50" />
+      <div className="absolute inset-0 animated-gradient-bg opacity-35" />
       
-      {/* Gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-[100px] animate-float-slow" />
+      {/* Gradient orbs - reduced opacity */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/12 rounded-full blur-[120px] animate-float" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/12 rounded-full blur-[100px] animate-float-slow" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px]" />
 
       {/* 3D Scene */}
