@@ -74,9 +74,9 @@ const HeroSection = () => {
 
         <motion.p
           variants={itemVariants}
-          className="text-lg md:text-xl text-muted-foreground font-heading mb-10"
+          className="text-xl md:text-2xl lg:text-3xl text-foreground/70 font-heading mb-10"
         >
-          B.E Computer Science and Design
+          B.E Computer Science and Design Student
         </motion.p>
 
         <motion.div
