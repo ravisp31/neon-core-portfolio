@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import ParticleBackground from "./ParticleBackground";
 
 const education = [
-  { degree: "B.Tech Computer Science and Design", institution: "Sona College of Technology, Salem", period: "2022 – 2026", grade: "CGPA 7.36", current: true },
+  { degree: "B.E Computer Science and Design", institution: "Sona College of Technology, Salem", period: "2022 – 2026", grade: "CGPA 7.36", current: true },
   { degree: "Higher Secondary (12th)", institution: "SRV Boys Higher Secondary School, Rasipuram", period: "2022", grade: "82%", current: false },
   { degree: "Secondary School (10th)", institution: "Government Higher Secondary School, Salem", period: "2020", grade: "72%", current: false },
 ];
