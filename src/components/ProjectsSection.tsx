@@ -7,6 +7,15 @@ import ParticleBackground from "./ParticleBackground";
 
 const projects = [
   { 
+    title: "Personal Portfolio Website", 
+    description: "A modern, responsive portfolio website built with React and Framer Motion. Features 3D elements, smooth animations, particle effects, and a clean design to showcase projects and skills.", 
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop", 
+    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Three.js"], 
+    liveUrl: "#", 
+    githubUrl: "#", 
+    color: "accent" 
+  },
+  { 
     title: "Task Manager App", 
     description: "A full-stack task manager where users can sign up, log in, and manage daily tasks. Supports CRUD operations and marking tasks as complete.", 
     image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop", 
